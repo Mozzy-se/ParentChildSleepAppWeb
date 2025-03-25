@@ -1,0 +1,30 @@
+android {
+    namespace "com.sleeptracker"
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.sleeptracker"
+        minSdk 26
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation 'androidx.health.connect:connect-client:1.1.0-beta01'
+    implementation 'androidx.activity:activity-compose:1.8.2'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.7.0'
+    // ... other dependencies
+} 

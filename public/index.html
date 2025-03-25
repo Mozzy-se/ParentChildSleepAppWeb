@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Sleep Tracker - Track your sleep patterns and improve your sleep quality"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>Sleep Tracker</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+    <!-- Samsung Health SDK -->
+    <script>
+      window.addEventListener('load', function() {
+        console.log('Loading Samsung Health SDK...');
+        // Initialize the SDK object
+        window.sdk = window.sdk || {};
+        
+        const script = document.createElement('script');
+        script.src = 'https://sdk.samsunghealth.com/sdk.js';
+        script.async = true;
+        script.onload = function() {
+          console.log('Samsung Health SDK loaded successfully');
+          if (window.sdk.SamsungHealth) {
+            console.log('Samsung Health SDK initialized successfully');
+          } else {
+            console.error('Samsung Health SDK not properly initialized');
+          }
+        };
+        script.onerror = function(error) {
+          console.error('Failed to load Samsung Health SDK:', error);
+        };
+        document.head.appendChild(script);
+      });
+    </script>
+    <script src="https://samsunghealthconnect.com/health-connect.js"></script>
+    <!-- Samsung Health Web SDK -->
+    <script src="https://developer.samsung.com/health/sdk/samsung-health-web-sdk.js"></script>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+</html> 
