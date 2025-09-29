@@ -53,11 +53,6 @@ export function DataVisualization({ sleepData, heartRateData, motionData }: Data
     duration: data.duration / 60, // Convert to hours
   }));
 
-  // Format data for sleep quality chart
-  const sleepQualityData = sleepData.map(data => ({
-    date: data.date.toLocaleDateString(),
-    quality: data.quality,
-  }));
 
   // Format data for sleep phases chart
   const sleepPhasesData = sleepData.map(data => {
@@ -79,7 +74,7 @@ export function DataVisualization({ sleepData, heartRateData, motionData }: Data
     <Box>
       <Grid container spacing={3}>
         {/* Sleep Duration Chart */}
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={12}>
           <Paper elevation={2} sx={{ p: 2 }}>
             <Typography variant="h6" gutterBottom>
               Sleep Duration
@@ -96,31 +91,6 @@ export function DataVisualization({ sleepData, heartRateData, motionData }: Data
                     dataKey="duration"
                     fill="#8884d8"
                     name="Duration (hours)"
-                  />
-                </BarChart>
-              </ResponsiveContainer>
-            </Box>
-          </Paper>
-        </Grid>
-
-        {/* Sleep Quality Chart */}
-        <Grid item xs={12} md={6}>
-          <Paper elevation={2} sx={{ p: 2 }}>
-            <Typography variant="h6" gutterBottom>
-              Sleep Quality
-            </Typography>
-            <Box sx={{ height: 300 }}>
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={sleepQualityData}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="date" />
-                  <YAxis label={{ value: 'Quality (%)', angle: -90, position: 'insideLeft' }} />
-                  <Tooltip />
-                  <Legend />
-                  <Bar
-                    dataKey="quality"
-                    fill="#82ca9d"
-                    name="Quality (%)"
                   />
                 </BarChart>
               </ResponsiveContainer>
@@ -152,7 +122,7 @@ export function DataVisualization({ sleepData, heartRateData, motionData }: Data
         </Grid>
 
         {/* Heart Rate Chart */}
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={12}>
           <Paper elevation={2} sx={{ p: 2 }}>
             <Typography variant="h6" gutterBottom>
               Heart Rate During Sleep
@@ -173,35 +143,6 @@ export function DataVisualization({ sleepData, heartRateData, motionData }: Data
                     dataKey="heartRate"
                     stroke="#8884d8"
                     name="Heart Rate (bpm)"
-                  />
-                </LineChart>
-              </ResponsiveContainer>
-            </Box>
-          </Paper>
-        </Grid>
-
-        {/* Motion Chart */}
-        <Grid item xs={12} md={6}>
-          <Paper elevation={2} sx={{ p: 2 }}>
-            <Typography variant="h6" gutterBottom>
-              Movement During Sleep
-            </Typography>
-            <Box sx={{ height: 300 }}>
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={motionData.map(data => ({
-                  time: new Date(data.timestamp).toLocaleTimeString(),
-                  movement: data.magnitude,
-                }))}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="time" />
-                  <YAxis label={{ value: 'Movement', angle: -90, position: 'insideLeft' }} />
-                  <Tooltip />
-                  <Legend />
-                  <Line
-                    type="monotone"
-                    dataKey="movement"
-                    stroke="#82ca9d"
-                    name="Movement"
                   />
                 </LineChart>
               </ResponsiveContainer>
