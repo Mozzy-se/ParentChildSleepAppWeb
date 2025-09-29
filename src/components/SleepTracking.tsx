@@ -82,7 +82,9 @@ export function SleepTracking() {
             {
               date: new Date(),
               duration: 480, // 8 hours in minutes
+              timeInBed: 510, // 8.5h in bed  
               quality: 85,
+              awakenings: 2,
               phases: [
                 { type: 'Deep', startTime: new Date(), duration: 120 },
                 { type: 'REM', startTime: new Date(), duration: 90 },
@@ -114,7 +116,9 @@ export function SleepTracking() {
             {
               date: new Date(),
               duration: 540, // 9 hours in minutes
+              timeInBed: 570, // 9.5 hours in minutes
               quality: 90,
+              awakenings: 1,
               phases: [
                 { type: 'Deep', startTime: new Date(), duration: 150 },
                 { type: 'REM', startTime: new Date(), duration: 120 },
@@ -146,7 +150,9 @@ export function SleepTracking() {
             {
               date: new Date(),
               duration: 510, // 8.5 hours in minutes
+              timeInBed: 570, // 9.5 hours in minutes
               quality: 88,
+              awakenings: 2,  
               phases: [
                 { type: 'Deep', startTime: new Date(), duration: 135 },
                 { type: 'REM', startTime: new Date(), duration: 105 },
@@ -288,6 +294,7 @@ export function SleepTracking() {
             sleepData={usersData[0]?.sleepData || []}
             heartRateData={usersData[0]?.heartRateData || []}
             motionData={usersData[0]?.motionData || []}
+            users={usersData.map(u => ({ userName: u.userName, sleepData: u.sleepData }))}
           />
         </TabPanel>
 
